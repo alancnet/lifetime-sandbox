@@ -1,0 +1,11 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "base-api.js",
+  "scripts": {
+    "test": "./node_modules/jasmine-node/bin/jasmine-node --verbose --matchall --test-dir ./"
+  },
+  "author": "",
+  "license": "ISC"
+}
