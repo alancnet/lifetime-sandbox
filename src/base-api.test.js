@@ -5,13 +5,29 @@ describe('BaseApi', () => {
     beforeEach(()=>{
         baseApi = new BaseApi();
     });
-    it('should greet me', () => {
-        expect(baseApi.helloWorld()).toEqual('Hello World!');
+    it('should let me send a message and give me a message', done => {
+        setTimeout(function() {}, 0);
+        baseApi.sendMessage('SIMPLE').forEach(msg=>{
+            expect(msg).toEqual({
+                        "type": "foo",
+                        "foo": "ahhh"
+                    });
+            done();
+        });
+    });
+    it('should let me send a message and give me a stream with multiple messages', done => {
+        setTimeout(function() {}, 0);
+        baseApi.sendMessage('STREAM').take(3).subscribe(msg=>{
+            expect(msg).toEqual({
+                        'type': 'test',
+                        'test': 'foo'
+                    });
+        },
+        console.error, ()=>{ done(); });
     });
 });
 
 describe('DataRouter', () => {
-    it('should derive from LazySubject');
     it('should have a way for GetStream to add its query');
     it('should have a way for GetStream to remove its query');
     it('should merge all queries to a single definition');
